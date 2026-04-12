@@ -2,23 +2,27 @@
 
 This module covers the shift from "Data at Rest" (Lists/Memory-bound) to "Data in Motion" (Generators/Compute-bound). Understanding generators is the prerequisite for building MLOps pipelines and training data loaders that don't crash servers.
 
-## 📂 File Index
+## 📂 Module Structure
 
-The scripts in this folder are designed to be run locally to prove python memory mechanics.
+This module has been organized using Domain-Driven Design to separate theory from execution and testing. 
 
-1. **`memory_usage.py`**
-   * **Concept:** Proves the O(1) memory footprint of generators.
-   * *Run this to see the difference in bytes between a 1-million item list and a 1-million item generator.*
+### 1. `\theory`
+The mental models, architectural explanations, and vocabulary required for this topic.
+* **`generators_journey.md`:** The "Cognitive Architect's Journey" — a deep dive into state machines, lazy evaluation, and the Projector vs. Box analogy.
+* **`generator_power_words.md`:** A glossary of terms (e.g., *Generator Exhaustion*, *Backpressure*) to use in system design interviews.
 
-2. **`broken_data_pipeline.py`**
-   * **Concept:** The "Single-Use Trap." Demonstrates how iterating over a generator completely exhausts it, leading to silent bugs if you try to reuse it.
+### 2. `\code`
+Runnable `.py` scripts designed to prove Python's memory mechanics locally.
+* **`memory_usage.py`:** Proves the O(1) memory footprint.
+* **`broken_data_pipeline...` files:** Demonstrates the "Single-Use Trap" and how to bypass it using the Factory Pattern.
+* **`excercise1_broken_data_pipeline.py`:** Simulates an AI Training loop using generators.
 
-3. **`broken_data_pipeline_fix.py`** & **`reuse_recipe.py`**
-   * **Concept:** The Factory Pattern limit bypass. Shows how to wrap generator logic in functions or use `itertools.tee` to spawn fresh streams.
+### 3. `\hands_on_challenges`
+Progressive coding challenges to test your ability to implement generators without relying on framework magic.
+* **`..._novice.md`:** Basic syntax and file reading limits.
+* **`..._intermediate.md`:** Orchestration, batching, and error handling.
+* **`..._architect.md`:** High-level system design, shuffling algorithms, and `yield from`.
 
-4. **`excercise1_broken_data_pipeline.py`**
-   * **Concept:** Simulating an AI Training loop (Epochs). Proves how the Factory Pattern is used in real machine learning loops to iterate over datasets infinitely.
-
-## 📖 Deep Dive Notes
-For the theoretical breakdown, mental models, and the "Projector vs Box" analogy, read the full thesis here:
-👉 **[The Cognitive Architect’s Journey (Generators)](generators_journey.md)**
+### 4. `\interview`
+Strict QA sets covering edge cases and interview curveballs.
+* **`interview_prep_qa_set1.md` - `set4.md`:** Covers everything from basic memory constraints to advanced DL framework (`DataLoader`) integration and deadlocks.
