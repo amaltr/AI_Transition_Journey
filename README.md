@@ -20,5 +20,9 @@ Architectural teardowns and notes on scaling applications.
 ### 4. `\interview_prep`
 My solutions to NeetCode 150 problems (Data Structures & Algorithms) and behavioral STAR format stories.
 
+### 5. `\devops_and_tools`
+Notes on Git, Docker, and deployment infrastructure.
+
+
 ---
 *Created by Amal T R. Aiming for 1% better every day.*
