@@ -1,3 +1,6 @@
+# Threading Execution Flow
+
+```mermaid
 sequenceDiagram
     participant Main as Main Thread (The Scientist)
     participant Timer as Timer Thread (The Assistant)
@@ -8,3 +11,4 @@ sequenceDiagram
     Timer->>Timer: Time's up! Executes task
     Note right of Timer: Thread dies after execution
     Main->>Main: Still running...
+```
