@@ -9,6 +9,8 @@
 ### 1. `\python_fundamentals`
 Deep dives into the mechanics of Python required for enterprise performance.
 * **[Threading](python_fundamentals/threading/README.md)**: Mental models for Timers, non-blocking asynchronous intervals, and graceful thread shutdowns using `threading.Event()`. Includes visual sequence diagrams.
+* **[Mutable Defaults](python_fundamentals/mutable_defaults/README.md)**: Pitfalls regarding late binding, state leakage in ML loggers, and how to fix them.
+* **[Generators](python_fundamentals/generators/README.md)**: Memory management, lazy evaluation, and pipeline patterns in Python.
 * Focus areas: Concurrency (GIL), Memory Management, Generators, API development (FastAPI).
 
 ### 2. `\machine_learning`
@@ -23,6 +25,7 @@ My solutions to NeetCode 150 problems (Data Structures & Algorithms) and behavio
 
 ### 5. `\devops_and_tools`
 Notes on Git, Docker, and deployment infrastructure.
+* **[Git Basics](devops_and_tools/git_basics.md)**: Core functionalities and version control workflows.
 
 
 ---
