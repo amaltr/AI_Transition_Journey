@@ -8,6 +8,7 @@
 
 ### 1. `\python_fundamentals`
 Deep dives into the mechanics of Python required for enterprise performance.
+* **[Threading](python_fundamentals/threading/README.md)**: Mental models for Timers, non-blocking asynchronous intervals, and graceful thread shutdowns using `threading.Event()`. Includes visual sequence diagrams.
 * Focus areas: Concurrency (GIL), Memory Management, Generators, API development (FastAPI).
 
 ### 2. `\machine_learning`
