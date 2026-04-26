@@ -1,0 +1,6 @@
+graph LR
+    A[Input Data] -->|Forward Pass| B(Operations: Matrix Mult/ReLU)
+    B --> C[Prediction]
+    C -->|Calculate Loss| D[Error Signal]
+    D -->|Backward Pass| E[Gradient Calculation]
+    E -->|Update| A
