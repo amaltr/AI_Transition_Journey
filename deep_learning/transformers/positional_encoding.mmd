@@ -1,0 +1,7 @@
+graph LR
+    A["Word: Bank"] --> B["Word Embedding Vector"]
+    C["Index: 0"] --> D["Positional Encoding Vector"]
+    B --> E["+"]
+    D --> E
+    E --> F["Position-Aware Embedding"]
+    F --> G["Transformer Layer"]
