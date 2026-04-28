@@ -1,0 +1,20 @@
+graph TD
+    Input[Input Tensor: Batch, Seq, D_model] --> Proj[Linear Projections: Q, K, V]
+    Proj --> Split[Split into 'h' Heads]
+    
+    subgraph Parallel_Heads [Parallel Processing]
+        H1[Head 1: Subspace A]
+        H2[Head 2: Subspace B]
+        Hn[Head n: Subspace Z]
+    end
+    
+    Split --> H1
+    Split --> H2
+    Split --> Hn
+    
+    H1 --> Concat[Concatenate All Heads]
+    H2 --> Concat
+    Hn --> Concat
+    
+    Concat --> Final[Final Linear Projection: W_o]
+    Final --> Output[Output: Batch, Seq, D_model]
