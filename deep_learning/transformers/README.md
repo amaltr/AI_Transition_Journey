@@ -22,11 +22,17 @@ Multi-Head Attention splits the embedding dimension into multiple "heads", allow
 * **Key Engineering Challenge**: Managing the complex tensor reshaping required to split and rejoin heads. A common error is flattening dimensions incorrectly, which mixes data from different heads and corrupts the representation.
 * **The Fix**: Using `.transpose(1, 2).contiguous()` to explicitly align the dimensions back to `(Batch, Seq, Heads, D_k)` *before* applying the `.view()` operation to merge the heads back into the original embedding dimension.
 
+### 4. Residual Connections & Layer Normalization (Signal Stability)
+In very deep architectures, the learning signal can degrade (vanishing gradients). Residual (Skip) Connections solve this by providing a "gradient superhighway" that allows the original signal to bypass the transformation block ($y = f(x) + x$).
+* **Key Engineering Challenge**: Determining where to apply Layer Normalization. "Post-LN" applies normalization after the residual addition, which can force the gradient through normalization and cause instability in very deep models.
+* **The Fix**: Adopting the modern "Pre-LN" architecture where normalization happens *before* the sublayer ($x + f(\text{LayerNorm}(x))$), keeping the gradient pathway completely unobstructed.
+
 
 ## 📂 File Structure & Implementations
 
 ### Documentation
 * **`transformers_journey.md`**: The primary knowledge base detailing mental model shifts from traditional programming to Transformer logic. Includes core analogies like "The Global Code Reviewer".
+* **`multihead_attention_journey.md`**: A focused guide on the mechanics of Multi-Head Attention, Residual connections, and Layer Normalization, emphasizing dimensional transformations and signal preservation.
 
 ### Positional Encoding Scripts
 * **`broken_positional_encoding.py`**: Demonstrates an anti-pattern and common broadcasting error when applying positional tags to batched word embeddings.
@@ -41,6 +47,9 @@ Multi-Head Attention splits the embedding dimension into multiple "heads", allow
 * **`broken_mha_split.py`**: Demonstrates the common dimension-flattening error when attempting to rejoin parallel attention heads back into a single tensor.
 * **`mha_split_rejoin_fix.py`**: The corrected implementation showing the proper sequence of `.transpose()` and `.contiguous()` operations before the final `.view()` merge.
 * **`multihead_attention.mmd`**: A Mermaid diagram illustrating the data flow from input embeddings through parallel attention heads and the final concatenation.
+
+### Residual & LayerNorm Scripts
+* **`residual_block_implementation.py`**: Compares the implementations of "Post-LN" and modern "Pre-LN" architectures, emphasizing how Pre-LN provides an unobstructed gradient superhighway.
 
 ---
 *Part of the AI Transition Journey portfolio.*
