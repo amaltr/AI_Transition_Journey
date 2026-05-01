@@ -50,6 +50,9 @@ In very deep architectures, the learning signal can degrade (vanishing gradients
 
 ### Residual & LayerNorm Scripts
 * **`residual_block_implementation.py`**: Compares the implementations of "Post-LN" and modern "Pre-LN" architectures, emphasizing how Pre-LN provides an unobstructed gradient superhighway.
+* **`broken_zero_initialization_preln.py`**: Demonstrates the anti-pattern of zero-initializing both weights and biases in the internal sublayer of a residual block, which paralyzes the network's ability to learn.
+* **`zero_initialization_preln_fix.py`**: The correct Pre-LN initialization strategy (zero-initializing only the final projection gatekeeper) to preserve the identity mapping while allowing internal latent learning.
+* **`residual_highway_preln.mmd`**: A Mermaid diagram illustrating the "Gradient Superhighway" concept in the Pre-LN architecture.
 
 ---
 *Part of the AI Transition Journey portfolio.*

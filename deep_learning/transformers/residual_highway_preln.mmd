@@ -1,0 +1,11 @@
+graph LR
+    Input((x_in)) --> MainRoad[("Main Identity Path (The Highway)")]
+    Input --> LN[LayerNorm]
+    LN --> SubLayer["Sublayer (Attention/FFN)"]
+    SubLayer --> Gatekeeper["Output Projection (W_o)"]
+    Gatekeeper -- "Initially 0" --> Adder((+))
+    MainRoad --> Adder
+    Adder --> Output((x_out))
+    
+    style Gatekeeper fill:#f96,stroke:#333,stroke-width:4px
+    style MainRoad stroke-dasharray: 5 5
